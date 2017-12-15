@@ -10,6 +10,9 @@ namespace Game
     {
         static void Main(string[] args)
         {
+            Arena.arena_menu();
+            Karczma.karczma_menu();
+            Console.ReadKey();
         }
     }
 }
