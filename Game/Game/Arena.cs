@@ -8,13 +8,31 @@ namespace Game
 {
     class Arena
     {
-        static public void arena_menu()
+        static public void menu()
         {
+            ConsoleKeyInfo cki;
+            Console.Clear();
             Console.WriteLine("Witaj na arenie! Co chcesz zrobić?\n1 - walka\n2 - opis\n3 - wyjść");
+            cki = Console.ReadKey();
+            if (cki.Key == ConsoleKey.NumPad1 || cki.Key == ConsoleKey.D1)
+            {
+            }
+            else if (cki.Key == ConsoleKey.NumPad2 || cki.Key == ConsoleKey.D2)
+            {
+                Console.Clear();
+                Arena.opis();
+            }
+            else if (cki.Key == ConsoleKey.NumPad3 || cki.Key == ConsoleKey.D3)
+            {
+                Miasto.menu();
+            }
         }
         static public void opis()
         {
-            Console.WriteLine("To tutaj dzielni wojownicy walczą by udowodnić swą potęgę!\n1 - powrót.");
+            Console.Clear();
+            Console.WriteLine("To tutaj, na arenie dzielni wojownicy walczą by udowodnić swą potęgę!\nWciśnij dowolny przycisk by wrócić.");
+            Console.ReadKey();
+            Arena.menu();
         }
     }
 }

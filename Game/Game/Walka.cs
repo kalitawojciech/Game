@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    class Program
+    class Walka
     {
-        static void Main(string[] args)
-        {
-            Miasto.menu();
-            Console.ReadKey();
-        }
+
     }
 }

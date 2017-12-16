@@ -8,11 +8,13 @@ namespace Game
 {
     class Hero
     {
-        int level;
-        int experience;
+        int level = 1;
+        int experience = 0;
         int experience_to_next_lvl = 100;
-        int hp;
-        int mana;
+        int aktualne_hp;
+        int max_hp;
+        int aktualna_mana;
+        int max_mana;
         int sila;
         int zrecznosc;
         int inteligencja;
@@ -21,7 +23,7 @@ namespace Game
         {
             this.experience += exp_from_mission;
         }
-        void level_up()
+        public virtual void level_up()
         {
             if(experience >= experience_to_next_lvl)
             {
@@ -32,8 +34,8 @@ namespace Game
         }
         public virtual void ulecz()
         {
-            this.hp += 50;
-            this.mana -= 30;
+            this.aktualne_hp += level * 25;
+            this.aktualna_mana -= 30;
         }
     }
 }
