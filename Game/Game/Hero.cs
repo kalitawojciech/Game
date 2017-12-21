@@ -27,9 +27,11 @@ namespace Game
         {
             if(experience >= experience_to_next_lvl)
             {
+                Console.Clear();
                 this.level += 1;
-                this.experience = experience_to_next_lvl - experience;
+                this.experience = this.experience - experience_to_next_lvl;
                 experience_to_next_lvl *= (level + 2);
+                Console.WriteLine("Awansowałeś na kolejny lvl.\nAby kontynuować wciśnij dowolny przycisk.");
             }
         }
         public virtual void ulecz()
@@ -37,5 +39,22 @@ namespace Game
             this.aktualne_hp += level * 25;
             this.aktualna_mana -= 30;
         }
+        public void odpocznij()
+        {
+            this.aktualne_hp = max_hp;
+            this.aktualna_mana = max_mana;
+        }
+    }
+    class Wojownik : Hero
+    {
+
+    }
+    class Mag : Hero
+    {
+
+    }
+    class Lucznik : Hero
+    {
+
     }
 }

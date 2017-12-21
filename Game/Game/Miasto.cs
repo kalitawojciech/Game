@@ -10,13 +10,15 @@ namespace Game
 {
     class Miasto
     {
+        Karczma karczma;
+        Arena arena;
         string nazwa;
         static public void opis()
         {
             Console.Clear();
             Console.WriteLine("Witaj w mieście!");
         }
-        static public void menu()
+        static public void menu(Arena arena, Karczma karczma)
         {
             Console.Clear();
             ConsoleKeyInfo cki;
@@ -24,11 +26,11 @@ namespace Game
             cki = Console.ReadKey();
             if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
             {
-                Arena.menu();
+                arena.menu();
             }
             else if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
             {
-                Karczma.menu();
+                karczma.menu();
             }
             else if (cki.Key == ConsoleKey.Escape)
             {
@@ -39,7 +41,7 @@ namespace Game
                 Console.Clear();
                 Console.WriteLine("Nie ma takiej opcji!\nWciśnij dowolny przycisk.");
                 Console.ReadKey();
-                Miasto.menu();
+                Miasto.menu(arena, karczma);
             }
         }
     }

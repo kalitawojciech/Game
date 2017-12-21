@@ -8,32 +8,36 @@ namespace Game
 {
     class Karczma
     {
-        static private void powitanie()
-        {
-            Console.WriteLine("Witaj w karczmie! Co chcesz zrobić?");
-        }
-        static public void menu()
+        public Arena arena;
+        public Karczma karczma;
+        public Karczma() { }
+        public Hero bohater;
+        public void menu()
         {
             Console.Clear();
-            Karczma.powitanie();
+            Console.WriteLine("Witaj w karczmie! Co chcesz zrobić?");
             ConsoleKeyInfo cki;
-            Console.WriteLine("1 - wykonać misję\n2 - odpocząć (przywrócenie hp i many)\n3 - opis\ninne przyciski - wyjść");
+            Console.WriteLine("1 - wykonać misję\n2 - odpocząć (przywrócenie hp i many)\n3 - opis\ninne przyciski - powrót");
             cki = Console.ReadKey();
             if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
             {
-                Arena.menu();
+                throw new NotImplementedException();
             }
             else if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
             {
-                Arena.menu();
+                bohater.odpocznij();
             }
             else if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3) 
             {
-                Arena.menu();
+                Console.Clear();
+                Console.WriteLine("Karczma to miejsce w którym ");
+                Console.ReadKey();
+                Karczma k = new Karczma();
+                k.menu();
             }
             else
             {
-                Miasto.menu();
+                Miasto.menu(arena, karczma);
             }
         }
     }

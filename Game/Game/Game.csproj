@@ -46,6 +46,7 @@
     <Compile Include="Equipment.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Karczma.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Miasto.cs" />
     <Compile Include="Mission.cs" />
     <Compile Include="Program.cs" />

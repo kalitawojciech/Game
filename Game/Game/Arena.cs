@@ -8,7 +8,9 @@ namespace Game
 {
     class Arena
     {
-        static public void menu()
+        public Arena arena;
+        public Karczma karczma;
+        public void menu()
         {
             ConsoleKeyInfo cki;
             Console.Clear();
@@ -20,19 +22,15 @@ namespace Game
             else if (cki.Key == ConsoleKey.NumPad2 || cki.Key == ConsoleKey.D2)
             {
                 Console.Clear();
-                Arena.opis();
+                Console.WriteLine("To tutaj, na arenie dzielni wojownicy walczą by udowodnić swą potęgę!\nWciśnij dowolny przycisk by wrócić.");
+                Console.ReadKey();
+                Arena a = new Arena();
+                a.menu();
             }
             else if (cki.Key == ConsoleKey.NumPad3 || cki.Key == ConsoleKey.D3)
             {
-                Miasto.menu();
+                Miasto.menu(arena, karczma);
             }
-        }
-        static public void opis()
-        {
-            Console.Clear();
-            Console.WriteLine("To tutaj, na arenie dzielni wojownicy walczą by udowodnić swą potęgę!\nWciśnij dowolny przycisk by wrócić.");
-            Console.ReadKey();
-            Arena.menu();
         }
     }
 }
