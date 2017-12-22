@@ -11,7 +11,7 @@ namespace Game
         protected int level = 1;
         protected int experience = 0;
         protected int experience_to_next_lvl = 100;
-        internal int aktualne_hp = 100;
+        protected int aktualne_hp = 100;
         protected int max_hp = 100;
         protected int aktualna_mana = 100;
         protected int max_mana = 100;
@@ -76,6 +76,22 @@ namespace Game
             int obrazenia = 0;
             obrazenia = sila * (level + 3);
             Console.WriteLine("Zadano {0} obrażeń!", sila * (level + 3));
+            return obrazenia;
+        }
+        internal int silny_atak()
+        {
+            int obrazenia = 0;
+            obrazenia = sila * (level + 3) * 2;
+            this.aktualna_mana -= 30;
+            Console.WriteLine("Zadano {0} obrażeń!", sila * (level + 3) * 2);
+            return obrazenia;
+        }
+        internal int oglusz()
+        {
+            int obrazenia = 0;
+            obrazenia = sila * (level + 3);
+            this.aktualna_mana -= 40;
+            Console.WriteLine("Zadano {0} obrażeń i ogłuszono przeciwnika!", sila * (level + 3));
             return obrazenia;
         }
 

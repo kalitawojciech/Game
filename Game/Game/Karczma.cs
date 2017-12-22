@@ -27,6 +27,10 @@ namespace Game
             {
                 Console.Clear();
                 bohater.odpocznij();
+                Console.WriteLine("Odpoczynek zakończony!\nAby kontynuować wciśnij dowolny pzycisk.");
+                Console.ReadKey();
+                Karczma k = new Karczma();
+                k.menu();
             }
             else if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3) 
             {

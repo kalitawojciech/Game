@@ -18,6 +18,7 @@ namespace Game
             cki = Console.ReadKey();
             if (cki.Key == ConsoleKey.NumPad1 || cki.Key == ConsoleKey.D1)
             {
+                throw new NotImplementedException();
             }
             else if (cki.Key == ConsoleKey.NumPad2 || cki.Key == ConsoleKey.D2)
             {
