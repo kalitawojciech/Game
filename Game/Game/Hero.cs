@@ -51,6 +51,7 @@ namespace Game
             this.aktualne_hp = max_hp;
             this.aktualna_mana = max_mana;
         }
+        protected abstract int atak();
     }
     class Wojownik : Hero
     {
@@ -70,44 +71,62 @@ namespace Game
                 Console.ReadKey();
             }
         }
+        protected override int atak()
+        {
+            int obrazenia = 0;
+            obrazenia = sila * (level + 3);
+            return obrazenia;
+        }
 
     }
-    class Mag : Hero
-    {
-        internal Mag() { this.aktualna_mana = 200; this.max_mana = 200; this.inteligencja = 10; }
-        protected override void level_up()
+     class Mag : Hero
+     {
+         internal Mag() { this.aktualna_mana = 200; this.max_mana = 200; this.inteligencja = 10; }
+         protected override void level_up()
+         {
+             if (experience >= experience_to_next_lvl)
+             {
+                 base.level_up();
+                 this.sila += level * 5;
+                 this.zrecznosc += level * 5;
+                 this.inteligencja += (level + 1) * 5;
+                 this.max_hp += max_hp * (level + 1);
+                 this.max_mana += 50;
+                 this.aktualna_mana = max_mana;
+                 this.aktualne_hp = max_hp;
+                 Console.ReadKey();
+             }
+         }
+         protected override int atak()
+         {
+             int obrazenia = 0;
+             obrazenia = inteligencja * (level + 3);
+             return obrazenia;
+         }
+     }
+         class Lucznik : Hero
+         {
+             internal Lucznik() { this.aktualne_hp = 150; this.max_hp = 150; this.aktualna_mana = 150; this.max_mana = 150; this.zrecznosc = 10; }
+             protected override void level_up()
+             {
+                 if (experience >= experience_to_next_lvl)
+                 {
+                     base.level_up();
+                     this.sila += level * 5;
+                     this.zrecznosc += (level + 1) * 5;
+                     this.inteligencja += level * 5;
+                     this.max_hp += max_hp * (level + 2);
+                     this.max_mana += 30;
+                     this.aktualna_mana = max_mana;
+                     this.aktualne_hp = max_hp;
+                     Console.ReadKey();
+                 }
+             }
+             protected override int atak()
         {
-            if (experience >= experience_to_next_lvl)
-            {
-                base.level_up();
-                this.sila += level * 5;
-                this.zrecznosc += level * 5;
-                this.inteligencja += (level + 1) * 5;
-                this.max_hp += max_hp * (level + 1);
-                this.max_mana += 50;
-                this.aktualna_mana = max_mana;
-                this.aktualne_hp = max_hp;
-                Console.ReadKey();
-            }
+            int obrazenia = 0;
+            obrazenia = zrecznosc * (level + 3);
+            return obrazenia;
         }
-    }
-        class Lucznik : Hero
-        {
-            internal Lucznik() { this.aktualne_hp = 150; this.max_hp = 150; this.aktualna_mana = 150; this.max_mana = 150; this.zrecznosc = 10; }
-            protected override void level_up()
-            {
-                if (experience >= experience_to_next_lvl)
-                {
-                    base.level_up();
-                    this.sila += level * 5;
-                    this.zrecznosc += (level + 1) * 5;
-                    this.inteligencja += level * 5;
-                    this.max_hp += max_hp * (level + 2);
-                    this.max_mana += 30;
-                    this.aktualna_mana = max_mana;
-                    this.aktualne_hp = max_hp;
-                    Console.ReadKey();
-                }
-            }
-        }
+         }
 }
