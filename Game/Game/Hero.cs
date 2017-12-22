@@ -138,13 +138,13 @@ namespace Game
             return obrazenia;
         }
      }
-         class Lucznik : Hero
+        class Lucznik : Hero
          {
-             internal Lucznik() { this.aktualne_hp = 150; this.max_hp = 150; this.aktualna_mana = 150; this.max_mana = 150; this.zrecznosc = 10; }
-             protected override void level_up()
-             {
-                 if (experience >= experience_to_next_lvl)
-                 {
+            internal Lucznik() { this.aktualne_hp = 150; this.max_hp = 150; this.aktualna_mana = 150; this.max_mana = 150; this.zrecznosc = 10; }
+            protected override void level_up()
+            {
+                if (experience >= experience_to_next_lvl)
+                {
                      base.level_up();
                      this.sila += level * 5;
                      this.zrecznosc += (level + 1) * 5;
@@ -154,14 +154,30 @@ namespace Game
                      this.aktualna_mana = max_mana;
                      this.aktualne_hp = max_hp;
                      Console.ReadKey();
-                 }
-             }
-             internal override int atak()
-             {
+                }
+            }
+            internal override int atak()
+            {
                  int obrazenia = 0;
                  obrazenia = zrecznosc * (level + 3);
                  Console.WriteLine("Zadano {0} obrażeń!", zrecznosc * (level + 3));
                  return obrazenia;
+            }
+            internal int head_shot()
+            {
+                int obrazenia = 0;
+                obrazenia = zrecznosc * (level + 3);
+                this.aktualna_mana -= 40;
+                Console.WriteLine("Zadano {0} obrażeń!", zrecznosc * (level + 3));
+                return obrazenia;
+            }
+            internal int mocny_strzal()
+            {
+                 int obrazenia = 0;
+                 obrazenia = zrecznosc * (level + 3) * 2;
+                 this.aktualna_mana -= 25;
+                 Console.WriteLine("Zadano {0} obrażeń!", zrecznosc * (level + 3) * 2);
+                 return obrazenia;
              }
-         }
+        }
 }
