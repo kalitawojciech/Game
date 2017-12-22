@@ -63,8 +63,8 @@ namespace Game
                 this.sila += (level + 1) * 5;
                 this.zrecznosc += level * 5;
                 this.inteligencja += level * 5;
-                this.max_hp += max_hp * (level + 1);
-                this.max_mana += max_mana + 25;
+                this.max_hp += max_hp * (level + 4);
+                this.max_mana += 15;
                 this.aktualna_mana = max_mana;
                 this.aktualne_hp = max_hp;
                 Console.ReadKey();
@@ -72,7 +72,7 @@ namespace Game
         }
 
     }
-    /*class Mag : Hero
+    class Mag : Hero
     {
         internal Mag() { this.aktualna_mana = 200; this.max_mana = 200; this.inteligencja = 10; }
         protected override void level_up()
@@ -80,20 +80,34 @@ namespace Game
             if (experience >= experience_to_next_lvl)
             {
                 base.level_up();
+                this.sila += level * 5;
+                this.zrecznosc += level * 5;
+                this.inteligencja += (level + 1) * 5;
+                this.max_hp += max_hp * (level + 1);
+                this.max_mana += 50;
+                this.aktualna_mana = max_mana;
+                this.aktualne_hp = max_hp;
                 Console.ReadKey();
             }
         }
     }
-    class Lucznik : Hero
-    {
-        internal Lucznik() { this.aktualne_hp = 150; this.max_hp = 150; this.aktualna_mana = 150; this.max_mana = 150; this.zrecznosc = 10; }
-        protected override void level_up()
+        class Lucznik : Hero
         {
-            if (experience >= experience_to_next_lvl)
+            internal Lucznik() { this.aktualne_hp = 150; this.max_hp = 150; this.aktualna_mana = 150; this.max_mana = 150; this.zrecznosc = 10; }
+            protected override void level_up()
             {
-                base.level_up();
-                Console.ReadKey();
+                if (experience >= experience_to_next_lvl)
+                {
+                    base.level_up();
+                    this.sila += level * 5;
+                    this.zrecznosc += (level + 1) * 5;
+                    this.inteligencja += level * 5;
+                    this.max_hp += max_hp * (level + 2);
+                    this.max_mana += 30;
+                    this.aktualna_mana = max_mana;
+                    this.aktualne_hp = max_hp;
+                    Console.ReadKey();
+                }
             }
         }
-    } */
 }
