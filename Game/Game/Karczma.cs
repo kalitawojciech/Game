@@ -25,6 +25,7 @@ namespace Game
             }
             else if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
             {
+                Console.Clear();
                 bohater.odpocznij();
             }
             else if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3) 

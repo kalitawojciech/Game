@@ -17,7 +17,7 @@ namespace Game
             arena.karczma = karczma;
             karczma.karczma = karczma;
             karczma.arena = arena;
-            Miasto.menu(arena, karczma);
+            //    Miasto.menu(arena, karczma);
             Console.ReadKey();
         }
     }
