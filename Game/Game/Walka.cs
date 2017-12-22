@@ -8,6 +8,11 @@ namespace Game
 {
     class Walka
     {
+        protected Hero gracz;
+    }
 
+    class Walka_vs_Hero : Walka
+    {
+        private Hero przeciwnik;
     }
 }

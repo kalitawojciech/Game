@@ -11,7 +11,7 @@ namespace Game
         protected int level = 1;
         protected int experience = 0;
         protected int experience_to_next_lvl = 100;
-        protected int aktualne_hp = 100;
+        internal int aktualne_hp = 100;
         protected int max_hp = 100;
         protected int aktualna_mana = 100;
         protected int max_mana = 100;
@@ -51,7 +51,7 @@ namespace Game
             this.aktualne_hp = max_hp;
             this.aktualna_mana = max_mana;
         }
-        protected abstract int atak();
+        internal abstract int atak();
     }
     class Wojownik : Hero
     {
@@ -71,10 +71,11 @@ namespace Game
                 Console.ReadKey();
             }
         }
-        protected override int atak()
+        internal override int atak()
         {
             int obrazenia = 0;
             obrazenia = sila * (level + 3);
+            Console.WriteLine("Zadano {0} obrażeń!", sila * (level + 3));
             return obrazenia;
         }
 
@@ -97,12 +98,29 @@ namespace Game
                  Console.ReadKey();
              }
          }
-         protected override int atak()
+         internal override int atak()
          {
              int obrazenia = 0;
              obrazenia = inteligencja * (level + 3);
+             Console.WriteLine("Zadano {0} obrażeń!", inteligencja * (level  + 3));
              return obrazenia;
          }
+        internal int kula_ognia()
+        {
+            int obrazenia = 0;
+            obrazenia = inteligencja * (level * 5);
+            this.aktualna_mana -= 30;
+            Console.WriteLine("Zadano {0} obrażeń!", inteligencja * (level * 5));
+            return obrazenia;
+        }
+        internal int zamroź()
+        {
+            int obrazenia = 0;
+            obrazenia = inteligencja * level;
+            this.aktualna_mana -= 50;
+            Console.WriteLine("Zadano {0} obrażeń i zamrożono przeciwnika!", inteligencja * (level * 5));
+            return obrazenia;
+        }
      }
          class Lucznik : Hero
          {
@@ -122,11 +140,12 @@ namespace Game
                      Console.ReadKey();
                  }
              }
-             protected override int atak()
-        {
-            int obrazenia = 0;
-            obrazenia = zrecznosc * (level + 3);
-            return obrazenia;
-        }
+             internal override int atak()
+             {
+                 int obrazenia = 0;
+                 obrazenia = zrecznosc * (level + 3);
+                 Console.WriteLine("Zadano {0} obrażeń!", zrecznosc * (level + 3));
+                 return obrazenia;
+             }
          }
 }
