@@ -10,7 +10,7 @@ namespace Game
     {
         static void Main(string[] args)
         {
-            Wojownik gracz = new Wojownik();
+            Mag gracz = new Mag();
             Karczma karczma = new Karczma();
             Arena arena = new Arena();
             arena.arena = arena;
@@ -23,20 +23,20 @@ namespace Game
             enemy.aktualne_hp = 500;
             Console.WriteLine(enemy.aktualne_hp);
             Console.ReadKey();
-            enemy.aktualne_hp -= gracz.menu();
+          /*  enemy.aktualne_hp -= gracz.menu();
             Console.WriteLine(enemy.aktualne_hp);
 
             Console.ReadKey();
             gracz.aktualne_hp -= enemy.menu();
             Console.WriteLine(enemy.aktualne_hp);
-            Console.ReadKey();
-           /* while (enemy.aktualne_hp > 0)
+            Console.ReadKey(); */
+            while (enemy.aktualne_hp > 0)
             {
                 enemy.aktualne_hp -= gracz.menu();
                 Console.WriteLine(enemy.aktualne_hp);
                 Console.ReadKey();
             }
-            Console.ReadKey(); */
+            Console.ReadKey();
         }
     }
 }
