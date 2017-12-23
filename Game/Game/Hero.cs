@@ -214,7 +214,7 @@ namespace Game
         {
             ConsoleKeyInfo cki;
             Console.Clear();
-            if (aktualna_mana >= 40)
+            if (aktualna_mana >= 50)
             {
                 Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - kula ognia ({3} obrażeń, koszt 30 many)\n3 - zamróź (zadajesz {4} obrażeń oraz przeciwnik traci turę, koszt 50 many)\nPozostałe przyciski - ulecz (przywraca {5} hp, koszt 30 many)", aktualne_hp, aktualna_mana, inteligencja * (level + 3), inteligencja * (level * 5), inteligencja * level, level * 25);
                 cki = Console.ReadKey();
@@ -228,8 +228,9 @@ namespace Game
                 }
                 else if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3)
                 {
-                    if(aktualna_mana - 40 >= 30)
+                    if(aktualna_mana - 50 >= 30)
                     {
+                        Console.Clear();
                         Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - kula ognia ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana - 50, inteligencja * (level + 3), inteligencja * 2 * (level + 3), level * 25);
                         cki = Console.ReadKey();
                         if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
@@ -248,6 +249,7 @@ namespace Game
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana - 50, inteligencja * (level + 3));
                         cki = Console.ReadKey();
                         return zamroz() + atak();
@@ -286,7 +288,7 @@ namespace Game
             }
         }
      }
-   /*  class Lucznik : Hero
+     class Lucznik : Hero
      {
          internal Lucznik() { this.aktualne_hp = 150; this.max_hp = 150; this.aktualna_mana = 150; this.max_mana = 150; this.zrecznosc = 10; }
          protected override void level_up()
@@ -316,7 +318,7 @@ namespace Game
          {
              Console.Clear();
              int obrazenia = 0;
-             obrazenia = zrecznosc * (level + 3);
+             obrazenia = zrecznosc * (level + 7);
              this.aktualna_mana -= 40;
              Console.WriteLine("Zadano {0} obrażeń!", zrecznosc * (level + 3));
              return obrazenia;
@@ -336,7 +338,7 @@ namespace Game
             Console.Clear();
             if (aktualna_mana >= 40)
             {
-                Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - silny atak ({3} obrażeń, koszt 30 many)\n3 - ogłuszenie (zadajesz {4} obrażeń oraz przeciwnik traci turę, koszt 40 many)\nPozostałe przyciski - ulecz (przywraca {5} hp, koszt 30 many)", aktualne_hp, aktualna_mana, sila * (level + 3), sila * 2 * (level + 3), sila * (level + 3), level * 25);
+                Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - mocny strzał ({3} obrażeń, koszt 30 many)\n3 - strzał w głowę (zadajesz {4} obrażeń oraz przeciwnik traci turę, koszt 40 many)\nPozostałe przyciski - ulecz (przywraca {5} hp, koszt 30 many)", aktualne_hp, aktualna_mana, zrecznosc * (level + 3), zrecznosc * 2 * (level + 3), zrecznosc * (level + 7), level * 25);
                 cki = Console.ReadKey();
                 if(cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
                 {
@@ -344,33 +346,34 @@ namespace Game
                 }
                 else if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
                 {
-                    return silny_atak();
+                    return mocny_strzal();
                 }
                 else if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3)
                 {
-                    if(aktualna_mana - 40 >= 30)
+                    if(aktualna_mana - 40 >= 25)
                     {
-                        Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - silny atak ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana - 40, sila * (level + 3), sila * 2 * (level + 3), level * 25);
+                        Console.Clear();
+                        Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 -  mocny strzał ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana - 40, zrecznosc * (level + 3), zrecznosc * 2 * (level + 3), level * 25);
                         cki = Console.ReadKey();
                         if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
                         {
-                            return oglusz() + atak();
+                            return head_shot() + atak();
                         }
                         else if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
                         {
-                            return oglusz() + silny_atak();
+                            return head_shot() + mocny_strzal();
                         }
                         else
                         {
                             ulecz();
-                            return oglusz();
+                            return head_shot();
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana - 40, sila * (level + 3));
+                        Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\nDowolny przycisk - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana - 40, zrecznosc * (level + 3));
                         cki = Console.ReadKey();
-                        return oglusz() + atak();
+                        return head_shot() + atak();
                     }
                 }
                 else
@@ -379,9 +382,9 @@ namespace Game
                     return 0;
                 }
             }
-            else if(aktualna_mana >= 30 && aktualna_mana < 40)
+            else if(aktualna_mana >= 25 && aktualna_mana < 40)
             {
-                Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - silny atak ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana, sila * (level + 3), sila * 2 * (level + 3), level * 25);
+                Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - mocny strzał ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana, zrecznosc * (level + 3), zrecznosc * 2 * (level + 3), level * 25);
                 cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
                 {
@@ -389,7 +392,7 @@ namespace Game
                 }
                 else if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
                 {
-                    return silny_atak();
+                    return mocny_strzal();
                 }
                 else
                 {
@@ -400,10 +403,10 @@ namespace Game
             }
             else
             {
-                Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana, sila * (level + 3));
-                cki = Console.ReadKey();
+                Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\nDowolny przycisk - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana, zrecznosc * (level + 3));
+                Console.ReadKey();
                 return atak();
             }
         }
-     } */
+     } 
 }

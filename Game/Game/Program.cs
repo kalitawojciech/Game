@@ -10,7 +10,7 @@ namespace Game
     {
         static void Main(string[] args)
         {
-            Mag gracz = new Mag();
+            Lucznik gracz = new Lucznik();
             Karczma karczma = new Karczma();
             Arena arena = new Arena();
             arena.arena = arena;
