@@ -108,7 +108,30 @@ namespace Game
                 }
                 else if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3)
                 {
-                    return oglusz();
+                    if(aktualna_mana - 40 >= 30)
+                    {
+                        Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - silny atak ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana - 40, sila * (level + 3), sila * 2 * (level + 3), level * 25);
+                        cki = Console.ReadKey();
+                        if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
+                        {
+                            return oglusz() + atak();
+                        }
+                        else if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
+                        {
+                            return oglusz() + silny_atak();
+                        }
+                        else
+                        {
+                            ulecz();
+                            return oglusz();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana - 40, sila * (level + 3));
+                        cki = Console.ReadKey();
+                        return oglusz() + atak();
+                    }
                 }
                 else
                 {
@@ -135,11 +158,12 @@ namespace Game
                 }
 
             }
-            return 5;
-
-
-
-
+            else
+            {
+                Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana, sila * (level + 3));
+                cki = Console.ReadKey();
+                return atak();
+            }
         }
 
     }
