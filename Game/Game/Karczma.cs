@@ -8,10 +8,8 @@ namespace Game
 {
     class Karczma
     {
-        public Arena arena;
-        public Karczma karczma;
-        public Karczma() { }
-        public Hero bohater;
+        public Karczma() {}
+        public Hero gracz;
         public void menu()
         {
             Console.Clear();
@@ -26,23 +24,27 @@ namespace Game
             else if (cki.Key == ConsoleKey.D2 || cki.Key == ConsoleKey.NumPad2)
             {
                 Console.Clear();
-                bohater.odpocznij();
+                gracz.odpocznij();
                 Console.WriteLine("Odpoczynek zakończony!\nAby kontynuować wciśnij dowolny pzycisk.");
                 Console.ReadKey();
-                Karczma k = new Karczma();
-                k.menu();
+                Karczma karczma = new Karczma();
+                karczma.gracz = gracz;
+                karczma.menu();
             }
             else if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3) 
             {
                 Console.Clear();
                 Console.WriteLine("Karczma to miejsce w którym ");
                 Console.ReadKey();
-                Karczma k = new Karczma();
-                k.menu();
+                Karczma karczma = new Karczma();
+                karczma.gracz = gracz;
+                karczma.menu();
             }
             else
             {
-                Miasto.menu(arena, karczma);
+                Miasto miasto = new Miasto();
+                miasto.gracz = gracz;
+                miasto.menu();
             }
         }
     }

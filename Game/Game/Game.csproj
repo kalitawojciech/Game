@@ -45,6 +45,7 @@
     <Compile Include="Arena.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="IamSI.cs" />
     <Compile Include="Karczma.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Miasto.cs" />

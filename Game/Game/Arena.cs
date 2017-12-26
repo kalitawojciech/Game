@@ -8,8 +8,7 @@ namespace Game
 {
     class Arena
     {
-        public Arena arena;
-        public Karczma karczma;
+        public Hero gracz;
         public void menu()
         {
             ConsoleKeyInfo cki;
@@ -18,19 +17,33 @@ namespace Game
             cki = Console.ReadKey();
             if (cki.Key == ConsoleKey.NumPad1 || cki.Key == ConsoleKey.D1)
             {
-                throw new NotImplementedException();
+                Console.Clear();
+                Console.WriteLine("Z kim chcesz walczyć\n1 - inny bohater");
+                cki = Console.ReadKey();
+                if(cki.Key == ConsoleKey.NumPad1 || cki.Key == ConsoleKey.D1)
+                {
+                    Walka_vs_Hero walka = new Walka_vs_Hero(gracz);
+                    walka.gracz = gracz;
+                    walka.walka();
+                    Arena arena = new Arena();
+                    arena.gracz = gracz;
+                    arena.menu();
+                }
             }
             else if (cki.Key == ConsoleKey.NumPad2 || cki.Key == ConsoleKey.D2)
             {
                 Console.Clear();
                 Console.WriteLine("To tutaj, na arenie dzielni wojownicy walczą by udowodnić swą potęgę!\nWciśnij dowolny przycisk by wrócić.");
                 Console.ReadKey();
-                Arena a = new Arena();
-                a.menu();
+                Arena arena = new Arena();
+                arena.gracz = gracz;
+                arena.menu();
             }
             else if (cki.Key == ConsoleKey.NumPad3 || cki.Key == ConsoleKey.D3)
             {
-                Miasto.menu(arena, karczma);
+                Miasto miasto = new Miasto();
+                miasto.gracz = gracz;
+                miasto.menu();
             }
         }
     }

@@ -8,35 +8,36 @@ namespace Game
 {
     abstract class Hero
     {
-        protected int level = 1;
+        internal int level = 1;
         protected int experience = 0;
         protected int experience_to_next_lvl = 100;
-        public int aktualne_hp = 100;
+        internal int aktualne_hp = 100;
         protected int max_hp = 100;
         protected int aktualna_mana = 100;
         protected int max_mana = 100;
         protected int sila = 5;
         protected int zrecznosc = 5;
         protected int inteligencja = 5;
-        void add_experience(int exp_from_mission)
+        internal void add_experience(int exp)
         {
-            this.experience += exp_from_mission;
+            this.experience += exp;
         }
-        protected virtual void level_up()
+        internal virtual void level_up()
         {
             Console.Clear();
             this.level += 1;
             this.experience = this.experience - experience_to_next_lvl;
             experience_to_next_lvl *= (level + 2);
-            Console.WriteLine("Awansowałeś na kolejny lvl.\nAby kontynuować wciśnij dowolny przycisk.");
+            Console.WriteLine("Awansowałeś na kolejny poziom. Twój oebecny poziom: {0}.\nAby kontynuować wciśnij dowolny przycisk.", level);
         }
-        protected virtual void ulecz()
+        protected virtual int ulecz()
         {
             Console.Clear();
             this.aktualne_hp += level * 25;
             this.aktualna_mana -= 30;
             Console.WriteLine("Uleczono {0} hp.\nWciśnij dowolny przycisk by kontynuować.", level * 25);
             Console.ReadLine();
+            return 0;
         }
         internal void odpocznij()
         {
@@ -44,11 +45,12 @@ namespace Game
             this.aktualna_mana = max_mana;
         }
         protected abstract int atak();
+        internal abstract int menu();
     }
     class Wojownik : Hero
     {
         internal Wojownik() { this.aktualne_hp = 200; this.max_hp = 200; this.sila = 10;  }
-        protected override void level_up()
+        internal override void level_up()
         {
             if (experience >= experience_to_next_lvl)
             {
@@ -89,7 +91,7 @@ namespace Game
             Console.WriteLine("Zadano {0} obrażeń i ogłuszono przeciwnika!", sila * (level + 3));
             return obrazenia;
         }
-        internal int menu()
+        internal override int menu()
         {
             ConsoleKeyInfo cki;
             Console.Clear();
@@ -169,7 +171,7 @@ namespace Game
     class Mag : Hero
      {
          internal Mag() { this.aktualna_mana = 200; this.max_mana = 200; this.inteligencja = 10; }
-         protected override void level_up()
+         internal override void level_up()
          {
              if (experience >= experience_to_next_lvl)
              {
@@ -210,7 +212,7 @@ namespace Game
             Console.WriteLine("Zadano {0} obrażeń i zamrożono przeciwnika!", inteligencja * level);
             return obrazenia;
         }
-        internal int menu()
+        internal override int menu()
         {
             ConsoleKeyInfo cki;
             Console.Clear();
@@ -291,7 +293,7 @@ namespace Game
      class Lucznik : Hero
      {
          internal Lucznik() { this.aktualne_hp = 150; this.max_hp = 150; this.aktualna_mana = 150; this.max_mana = 150; this.zrecznosc = 10; }
-         protected override void level_up()
+         internal override void level_up()
          {
              if (experience >= experience_to_next_lvl)
              {
@@ -332,7 +334,7 @@ namespace Game
              Console.WriteLine("Zadano {0} obrażeń!", zrecznosc * (level + 3) * 2);
              return obrazenia;
          }
-         internal int menu()
+         internal override int menu()
         {
             ConsoleKeyInfo cki;
             Console.Clear();
@@ -371,6 +373,7 @@ namespace Game
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\nDowolny przycisk - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana - 40, zrecznosc * (level + 3));
                         cki = Console.ReadKey();
                         return head_shot() + atak();
@@ -408,5 +411,128 @@ namespace Game
                 return atak();
             }
         }
-     } 
+     }
+    class Wojownik_SI : Wojownik, IamSI
+    {
+        protected override int ulecz()
+        {
+            Console.Clear();
+            this.aktualne_hp += level * 25;
+            this.aktualna_mana -= 30;
+            return 0;
+        }
+        public void lvl_up(int poziom)
+        {
+            for(int i = 2; i <= poziom; i++)
+            {
+                this.level += 1;
+                this.sila += (level + 1) * 5;
+                this.zrecznosc += level * 5;
+                this.inteligencja += level * 5;
+                this.max_hp += max_hp * (level + 4);
+                this.max_mana += 15;
+                this.aktualna_mana = max_mana;
+                this.aktualne_hp = max_hp;
+            }
+        }
+        public int si_fight()
+        {
+            if(aktualne_hp < aktualne_hp / 2 && aktualna_mana >= 30)
+            {
+                Console.Clear();
+                Console.WriteLine("Przeciwnik leczy sobie {0} hp.\nWciśnij dowolny przycisk by kontynuować.", level * 25);
+                Console.ReadKey();
+                return ulecz();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Przeciwnik zadaje Tobie {0} obrażeń.\nWciśnij dowolny przycisk by kontynuować.", sila * (level + 3));
+                Console.ReadKey();
+                return atak();
+            }
+        }
+    }
+    class Mag_SI : Mag, IamSI
+    {
+        protected override int ulecz()
+        {
+            Console.Clear();
+            this.aktualne_hp += level * 25;
+            this.aktualna_mana -= 30;
+            return 0;
+        }
+        public void lvl_up(int poziom)
+        {
+            for (int i = 2; i <= poziom; i++)
+            {
+                this.level += 1;
+                this.sila += level * 5;
+                this.zrecznosc += level * 5;
+                this.inteligencja += (level + 1) * 5;
+                this.max_hp += max_hp * (level + 1);
+                this.max_mana += 50;
+                this.aktualna_mana = max_mana;
+                this.aktualne_hp = max_hp;
+            }
+        }
+        public int si_fight()
+        {
+            if (aktualne_hp < aktualne_hp / 2 && aktualna_mana >= 30)
+            {
+                Console.Clear();
+                Console.WriteLine("Przeciwnik leczy sobie {0} hp.\nWciśnij dowolny przycisk by kontynuować.", level * 25);
+                Console.ReadKey();
+                return ulecz();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Przeciwnik zadaje Tobie {0} obrażeń.\nWciśnij dowolny przycisk by kontynuować.", sila * (level + 3));
+                Console.ReadKey();
+                return atak();
+            }
+        }
+    }
+    class Lucznik_SI : Lucznik, IamSI
+    {
+        protected override int ulecz()
+        {
+            Console.Clear();
+            this.aktualne_hp += level * 25;
+            this.aktualna_mana -= 30;
+            return 0;
+        }
+        public void lvl_up(int poziom)
+        {
+            for (int i = 2; i <= poziom; i++)
+            {
+                this.level += 1;
+                this.sila += level * 5;
+                this.zrecznosc += (level + 1) * 5;
+                this.inteligencja += level * 5;
+                this.max_hp += max_hp * (level + 2);
+                this.max_mana += 30;
+                this.aktualna_mana = max_mana;
+                this.aktualne_hp = max_hp;
+            }
+        }
+        public int si_fight()
+        {
+            if (aktualne_hp < aktualne_hp / 2 && aktualna_mana >= 30)
+            {
+                Console.Clear();
+                Console.WriteLine("Przeciwnik leczy sobie {0} hp.\nWciśnij dowolny przycisk by kontynuować.", level * 25);
+                Console.ReadKey();
+                return ulecz();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Przeciwnik zadaje Tobie {0} obrażeń.\nWciśnij dowolny przycisk by kontynuować.", sila * (level + 3));
+                Console.ReadKey();
+                return atak();
+            }
+        }
+    }
 }
