@@ -28,7 +28,7 @@ namespace Game
             this.level += 1;
             this.experience = this.experience - experience_to_next_lvl;
             experience_to_next_lvl *= (level + 2);
-            Console.WriteLine("Awansowałeś na kolejny poziom. Twój oebecny poziom: {0}.\nAby kontynuować wciśnij dowolny przycisk.", level);
+            Console.WriteLine("Awansowałeś na kolejny poziom. Twój obecny poziom: {0}.\nAby kontynuować wciśnij dowolny przycisk.", level);
         }
         protected virtual int ulecz()
         {

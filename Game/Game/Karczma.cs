@@ -25,7 +25,7 @@ namespace Game
             {
                 Console.Clear();
                 gracz.odpocznij();
-                Console.WriteLine("Odpoczynek zakończony!\nAby kontynuować wciśnij dowolny pzycisk.");
+                Console.WriteLine("Odpoczynek zakończony!\nAby kontynuować wciśnij dowolny przycisk.");
                 Console.ReadKey();
                 Karczma karczma = new Karczma();
                 karczma.gracz = gracz;
@@ -34,7 +34,7 @@ namespace Game
             else if (cki.Key == ConsoleKey.D3 || cki.Key == ConsoleKey.NumPad3) 
             {
                 Console.Clear();
-                Console.WriteLine("Karczma to miejsce w którym ");
+                Console.WriteLine("Karczma to miejsce w którym możesz dostać zadanie od różnych dziwnych ludzi.\nW wolnej chwili możesz zregenerować swoje hp i manę podczas odpoczynku.\n Wciśnij dowolny przycisk by kontynuować.");
                 Console.ReadKey();
                 Karczma karczma = new Karczma();
                 karczma.gracz = gracz;
