@@ -8,9 +8,10 @@ namespace Game
 {
     class Mission
     {
-        string mission_name;
-        int experience_from_mission;
-        string opis;
+        protected Hero gracz;
+        private List<string> nazwa_misji;
+        private int experience_from_mission = 0;
+        private List<string> opis_misji;
 
     }
 }

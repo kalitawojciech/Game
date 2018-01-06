@@ -18,6 +18,7 @@ namespace Game
         protected int sila = 5;
         protected int zrecznosc = 5;
         protected int inteligencja = 5;
+        internal int wykonane_misje = 0;
         internal void add_experience(int exp)
         {
             this.experience += exp;

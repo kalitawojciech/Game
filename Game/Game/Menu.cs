@@ -23,7 +23,6 @@ namespace Game
                     Wojownik gracz = new Wojownik();
                     Karczma karczma = new Karczma();
                     Arena arena = new Arena();
-                    Wojownik enemy = new Wojownik();
                     Miasto miasto = new Miasto();
                     miasto.gracz = gracz;
                     miasto.menu();
@@ -34,7 +33,6 @@ namespace Game
                     Mag gracz = new Mag();
                     Karczma karczma = new Karczma();
                     Arena arena = new Arena();
-                    Wojownik enemy = new Wojownik();
                     Miasto miasto = new Miasto();
                     miasto.gracz = gracz;
                     miasto.menu();
@@ -45,7 +43,6 @@ namespace Game
                     Lucznik gracz = new Lucznik();
                     Karczma karczma = new Karczma();
                     Arena arena = new Arena();
-                    Wojownik enemy = new Wojownik();
                     Miasto miasto = new Miasto();
                     miasto.gracz = gracz;
                     miasto.menu();
