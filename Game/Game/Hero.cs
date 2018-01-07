@@ -98,6 +98,7 @@ namespace Game
             Console.Clear();
             if (aktualna_mana >= 40)
             {
+                Console.Clear();
                 Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - silny atak ({3} obrażeń, koszt 30 many)\n3 - ogłuszenie (zadajesz {4} obrażeń oraz przeciwnik traci turę, koszt 40 many)\nPozostałe przyciski - ulecz (przywraca {5} hp, koszt 30 many)", aktualne_hp, aktualna_mana, sila * (level + 3), sila * 2 * (level + 3), sila * (level + 3), level * 25);
                 cki = Console.ReadKey();
                 if(cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
@@ -112,6 +113,7 @@ namespace Game
                 {
                     if(aktualna_mana - 40 >= 30)
                     {
+                        Console.Clear();
                         Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - silny atak ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana - 40, sila * (level + 3), sila * 2 * (level + 3), level * 25);
                         cki = Console.ReadKey();
                         if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
@@ -130,6 +132,7 @@ namespace Game
                     }
                     else
                     {
+                        Console.Clear();
                         Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana - 40, sila * (level + 3));
                         cki = Console.ReadKey();
                         return oglusz() + atak();
@@ -143,6 +146,7 @@ namespace Game
             }
             else if(aktualna_mana >= 30 && aktualna_mana < 40)
             {
+                Console.Clear();
                 Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - silny atak ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana, sila * (level + 3), sila * 2 * (level + 3), level * 25);
                 cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
@@ -162,6 +166,7 @@ namespace Game
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana, sila * (level + 3));
                 cki = Console.ReadKey();
                 return atak();
@@ -266,6 +271,7 @@ namespace Game
             }
             else if(aktualna_mana >= 30 && aktualna_mana < 40)
             {
+                Console.Clear();
                 Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - kula ognia ({3} obrażeń, koszt 30 many)\nPozostałe przyciski - ulecz (przywraca {4} hp, koszt 30 many)", aktualne_hp, aktualna_mana, sila * (level + 3), sila * (level * 5), level * 25);
                 cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
@@ -285,6 +291,7 @@ namespace Game
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)", aktualne_hp, aktualna_mana, sila * (level + 3));
                 cki = Console.ReadKey();
                 return atak();
@@ -341,6 +348,7 @@ namespace Game
             Console.Clear();
             if (aktualna_mana >= 40)
             {
+                Console.Clear();
                 Console.WriteLine("Masz {0} hp i {1} many. Co chcesz zrobić?\n1 - zwykły atak ({2} obrażeń)\n2 - mocny strzał ({3} obrażeń, koszt 30 many)\n3 - strzał w głowę (zadajesz {4} obrażeń oraz przeciwnik traci turę, koszt 40 many)\nPozostałe przyciski - ulecz (przywraca {5} hp, koszt 30 many)", aktualne_hp, aktualna_mana, zrecznosc * (level + 3), zrecznosc * 2 * (level + 3), zrecznosc * (level + 7), level * 25);
                 cki = Console.ReadKey();
                 if(cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)

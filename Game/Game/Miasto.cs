@@ -37,7 +37,8 @@ namespace Game
             }
             else if (cki.Key == ConsoleKey.Escape)
             {
-                // dodać użycie metody statycznej menu() gry
+                Console.Clear();
+                Menu.menu();
             }
             else
             {

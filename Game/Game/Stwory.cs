@@ -32,13 +32,16 @@ namespace Game
         }
         internal override void lvl_up()
         {
-            this.sila *= (level + 4);
-            this.zrecznosc *= (level * 4);
-            this.aktualne_hp *= 2 * level + 5;
+            if (level > 1)
+            {
+                this.sila *= (level + 4);
+                this.zrecznosc *= (level * 4);
+                this.aktualne_hp *= 2 * level + 5;
+            }
         }
-        internal void fight_menu()
+        internal int fight_menu()
         {
-            atak();
+            return atak();
         }
     }
 }

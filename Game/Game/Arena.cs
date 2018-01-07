@@ -18,13 +18,28 @@ namespace Game
             if (cki.Key == ConsoleKey.NumPad1 || cki.Key == ConsoleKey.D1)
             {
                 Console.Clear();
-                Console.WriteLine("Z kim chcesz walczyć\n1 - inny bohater");
+                Console.WriteLine("Z kim chcesz walczyć\n1 - inny bohater\n2 - wrogi stwór\npozostałe przyciski - powrót");
                 cki = Console.ReadKey();
                 if(cki.Key == ConsoleKey.NumPad1 || cki.Key == ConsoleKey.D1)
                 {
                     Walka_vs_Hero walka = new Walka_vs_Hero(gracz);
                     walka.gracz = gracz;
                     walka.walka();
+                    Arena arena = new Arena();
+                    arena.gracz = gracz;
+                    arena.menu();
+                }
+                else if (cki.Key == ConsoleKey.NumPad2 || cki.Key == ConsoleKey.D2)
+                {
+                    Walka_vs_Stwory walka = new Walka_vs_Stwory(gracz);
+                    walka.gracz = gracz;
+                    walka.walka();
+                    Arena arena = new Arena();
+                    arena.gracz = gracz;
+                    arena.menu();
+                }
+                else
+                {
                     Arena arena = new Arena();
                     arena.gracz = gracz;
                     arena.menu();

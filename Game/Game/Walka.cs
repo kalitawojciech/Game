@@ -139,4 +139,52 @@ namespace Game
 
         }
     }
+    class Walka_vs_Stwory : Walka
+    {
+        internal Walka_vs_Stwory(Hero gracz) { this.gracz = gracz; }
+        internal override void walka()
+        {
+            Random rnd = new Random();
+            int a = rnd.Next(1, 2);
+            if (a == 1)
+            {
+                Console.Clear();
+                Wilk przeciwnik = new Wilk(gracz.level);
+                przeciwnik.lvl_up();
+                Console.WriteLine("Twoim przeciwnikem jest wilk na poziomie {0}!\nWciśnij dowolny przycisk by kontynuuować", przeciwnik.level);
+                Console.ReadKey();
+                int i = 1;
+                while (gracz.aktualne_hp > 0 && przeciwnik.aktualne_hp > 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Runda {0}, masz {1} hp, przeciwnik ma {2} hp.\nWciśnij dowolny przycisk by kontynuować.", i, gracz.aktualne_hp, przeciwnik.aktualne_hp);
+                    i++;
+                    Console.ReadKey();
+                    przeciwnik.aktualne_hp -= gracz.menu();
+                    if (przeciwnik.aktualne_hp > 0)
+                    {
+                        gracz.aktualne_hp -= przeciwnik.fight_menu();
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (gracz.aktualne_hp > 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Wygrywasz!\nWciśnij dowolny przycisk by kontynuować.");
+                    Console.ReadKey();
+                    gracz.add_experience((przeciwnik.level + 1) * 50);
+                    gracz.level_up();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Niestety tym razem się nie udało.\nWciśnij dowolny przycisk by kontynuować.");
+                    Console.ReadKey();
+                }
+            }
+        }
+    }
 }
