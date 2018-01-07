@@ -16,7 +16,7 @@ namespace Game
             if (gracz.wykonane_misje < Program.opis_misji.Count)
             {
                 Program.lista[gracz.wykonane_misje].lvl_up(gracz.level);
-                Console.WriteLine(Program.opis_misji[gracz.wykonane_misje] + "\n\n1 - podejmij się misji\npozostałe przyciski - powrót");
+                Console.WriteLine("Misja: " + Program.nazwa_misji[gracz.wykonane_misje] + "\n" + Program.opis_misji[gracz.wykonane_misje] + "\n\n1 - podejmij się misji\npozostałe przyciski - powrót");
                 ConsoleKeyInfo cki;
                 cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
@@ -60,7 +60,6 @@ namespace Game
                 Console.WriteLine("Aktualnie nie ma nowych misji, wróć później.\n\nWciśnij dowolny przycisk by kontynuować.");
                 Console.ReadKey();
             }
-            Console.ReadKey();
             Karczma karczma = new Karczma();
             karczma.gracz = gracz;
             karczma.menu();
