@@ -8,8 +8,14 @@ namespace Game
 {
     class Program
     {
+        static internal List<string> nazwa_misji = new List<string>();
+        static internal List<string> opis_misji = new List<string>();
+        static internal List<object> walki = new List<object>();
         static void Main(string[] args)
         {
+            nazwa_misji.Add("Polowanie na wilki.");
+            opis_misji.Add("Pewien wilk zjada kury z mojej farmy. Zabij go dla mnie a nie poszczędzę grosza");
+
             Menu.menu();
         }
     }

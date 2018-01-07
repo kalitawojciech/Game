@@ -9,9 +9,21 @@ namespace Game
     class Mission
     {
         protected Hero gracz;
-        private List<string> nazwa_misji;
         private int experience_from_mission = 0;
-        private List<string> opis_misji;
-
+        internal Mission(Hero gracz) { this.gracz = gracz; }
+        internal void do_mission()
+        {
+            Console.Clear();
+            Console.WriteLine(Program.opis_misji[gracz.wykonane_misje] + "\n\n1 - podejmij się misji\npozostałe przyciski - powrót");
+            ConsoleKeyInfo cki;
+            cki = Console.ReadKey();
+            if(cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
+            {
+                Walka_vs_Stwory walka = new Walka_vs_Stwory(gracz);
+                walka.walka();
+            }
+            Console.ReadKey();
+        }
+        
     }
 }

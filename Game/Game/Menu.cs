@@ -10,7 +10,7 @@ namespace Game
     {
         public static void menu()
         {
-            Console.WriteLine("1 - nowa gra\n2 - wczytaj grę - brak\n3 - zapisz grę - brak\nEsc - wyjście - brak");
+            Console.WriteLine("1 - nowa gra\n2 - wczytaj grę - brak\n3 - zapisz grę - brak\nEsc - wyjście");
             ConsoleKeyInfo cki;
             cki = Console.ReadKey();
             if (cki.Key == ConsoleKey.D1 || cki.Key == ConsoleKey.NumPad1)
@@ -59,7 +59,7 @@ namespace Game
             }
             else if (cki.Key == ConsoleKey.Escape)
             {
-                throw new NotImplementedException();
+        
             }
         }
 

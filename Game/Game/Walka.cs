@@ -149,8 +149,8 @@ namespace Game
             if (a == 1)
             {
                 Console.Clear();
-                Wilk przeciwnik = new Wilk(gracz.level);
-                przeciwnik.lvl_up();
+                Wilk przeciwnik = new Wilk();
+                przeciwnik.lvl_up(gracz.level);
                 Console.WriteLine("Twoim przeciwnikem jest wilk na poziomie {0}!\nWciśnij dowolny przycisk by kontynuuować", przeciwnik.level);
                 Console.ReadKey();
                 int i = 1;

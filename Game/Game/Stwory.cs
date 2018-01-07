@@ -15,28 +15,29 @@ namespace Game
         protected int zrecznosc = 5;
         protected int inteligencja = 5;
         protected abstract int atak();
-        internal abstract void lvl_up();
+        internal abstract void lvl_up(int lvl);
     }
     class Wilk : Stwory
     {
-        internal Wilk(int level) { this.level = level; this.aktualne_hp = 250; }
+        internal Wilk() {this.aktualne_hp = 250; }
 
         protected override int atak()
         {
             Console.Clear();
             int obrazenia;
-            obrazenia = level * (sila + zrecznosc) * 2;
+            obrazenia = level * (sila + zrecznosc);
             Console.WriteLine("Wilk zadaje Ci {0} obrażeń.\nWciśnij dowolny przycisk by kontynuować.", obrazenia);
             Console.ReadKey();
             return obrazenia;
         }
-        internal override void lvl_up()
+        internal override void lvl_up(int lvl)
         {
             if (level > 1)
             {
-                this.sila *= (level + 4);
-                this.zrecznosc *= (level * 4);
-                this.aktualne_hp *= 2 * level + 5;
+                this.level = lvl;
+                this.sila *= (lvl + 2);
+                this.zrecznosc *= (lvl * 4);
+                this.aktualne_hp *= lvl + 3;
             }
         }
         internal int fight_menu()
