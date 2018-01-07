@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    abstract class Stwory
+    abstract class Stwory : HeroesAndStwory
     {
-        internal int level = 1;
-        internal int aktualne_hp = 100;
         protected int aktualna_mana = 0;
-        protected int sila = 5;
-        protected int zrecznosc = 5;
-        protected int inteligencja = 5;
         protected abstract int atak();
-        internal abstract void lvl_up(int lvl);
     }
-    class Wilk : Stwory
+    class Wilk : Stwory, IamSI
     {
         internal Wilk() {this.aktualne_hp = 250; }
 
@@ -30,7 +24,7 @@ namespace Game
             Console.ReadKey();
             return obrazenia;
         }
-        internal override void lvl_up(int lvl)
+        public void lvl_up(int lvl)
         {
             if (level > 1)
             {
@@ -40,7 +34,7 @@ namespace Game
                 this.aktualne_hp *= lvl + 3;
             }
         }
-        internal int fight_menu()
+        public int si_fight()
         {
             return atak();
         }

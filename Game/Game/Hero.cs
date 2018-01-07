@@ -6,18 +6,14 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    abstract class Hero
+    abstract class Hero : HeroesAndStwory
     {
-        internal int level = 1;
+        
         protected int experience = 0;
         protected int experience_to_next_lvl = 100;
-        internal int aktualne_hp = 100;
         protected int max_hp = 100;
         protected int aktualna_mana = 100;
         protected int max_mana = 100;
-        protected int sila = 5;
-        protected int zrecznosc = 5;
-        protected int inteligencja = 5;
         internal int wykonane_misje = 0;
         internal void add_experience(int exp)
         {
@@ -444,7 +440,7 @@ namespace Game
                 this.aktualne_hp = max_hp;
             }
         }
-        public int si_fight()
+        internal override int si_fight()
         {
             if(aktualne_hp < aktualne_hp / 2 && aktualna_mana >= 30)
             {
@@ -485,7 +481,7 @@ namespace Game
                 this.aktualne_hp = max_hp;
             }
         }
-        public int si_fight()
+        internal override int si_fight()
         {
             if (aktualne_hp < aktualne_hp / 2 && aktualna_mana >= 30)
             {
@@ -526,7 +522,7 @@ namespace Game
                 this.aktualne_hp = max_hp;
             }
         }
-        public int si_fight()
+        internal override int si_fight()
         {
             if (aktualne_hp < aktualne_hp / 2 && aktualna_mana >= 30)
             {

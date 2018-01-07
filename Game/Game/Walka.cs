@@ -136,7 +136,6 @@ namespace Game
                     Console.ReadKey();
                 }
             }
-
         }
     }
     class Walka_vs_Stwory : Walka
@@ -163,7 +162,7 @@ namespace Game
                     przeciwnik.aktualne_hp -= gracz.menu();
                     if (przeciwnik.aktualne_hp > 0)
                     {
-                        gracz.aktualne_hp -= przeciwnik.fight_menu();
+                        gracz.aktualne_hp -= przeciwnik.si_fight();
                     }
                     else
                     {

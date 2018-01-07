@@ -9,6 +9,5 @@ namespace Game
     interface IamSI
     {
         void lvl_up(int poziom);
-        int si_fight();
     }
 }
