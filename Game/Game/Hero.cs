@@ -417,7 +417,7 @@ namespace Game
             }
         }
      }
-    class Wojownik_SI : Wojownik, IamSI
+    class Wojownik_SI : Wojownik
     {
         protected override int ulecz()
         {
@@ -426,7 +426,7 @@ namespace Game
             this.aktualna_mana -= 30;
             return 0;
         }
-        public void lvl_up(int poziom)
+        internal override void lvl_up(int poziom)
         {
             for(int i = 2; i <= poziom; i++)
             {
@@ -458,7 +458,7 @@ namespace Game
             }
         }
     }
-    class Mag_SI : Mag, IamSI
+    class Mag_SI : Mag
     {
         protected override int ulecz()
         {
@@ -467,7 +467,7 @@ namespace Game
             this.aktualna_mana -= 30;
             return 0;
         }
-        public void lvl_up(int poziom)
+        internal override void lvl_up(int poziom)
         {
             for (int i = 2; i <= poziom; i++)
             {
@@ -499,7 +499,7 @@ namespace Game
             }
         }
     }
-    class Lucznik_SI : Lucznik, IamSI
+    class Lucznik_SI : Lucznik
     {
         protected override int ulecz()
         {
@@ -508,7 +508,7 @@ namespace Game
             this.aktualna_mana -= 30;
             return 0;
         }
-        public void lvl_up(int poziom)
+        internal override void lvl_up(int poziom)
         {
             for (int i = 2; i <= poziom; i++)
             {

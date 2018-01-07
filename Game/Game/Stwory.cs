@@ -11,7 +11,7 @@ namespace Game
         protected int aktualna_mana = 0;
         protected abstract int atak();
     }
-    class Wilk : Stwory, IamSI
+    class Wilk : Stwory
     {
         internal Wilk() {this.aktualne_hp = 250; }
 
@@ -24,14 +24,14 @@ namespace Game
             Console.ReadKey();
             return obrazenia;
         }
-        public void lvl_up(int lvl)
+        internal override void lvl_up(int poziom)
         {
             if (level > 1)
             {
-                this.level = lvl;
-                this.sila *= (lvl + 2);
-                this.zrecznosc *= (lvl * 4);
-                this.aktualne_hp *= lvl + 3;
+                this.level = poziom;
+                this.sila *= (poziom + 2);
+                this.zrecznosc *= (poziom * 4);
+                this.aktualne_hp *= poziom + 3;
             }
         }
         public int si_fight()

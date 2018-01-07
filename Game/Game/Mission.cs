@@ -15,6 +15,7 @@ namespace Game
             Console.Clear();
             if (gracz.wykonane_misje < Program.opis_misji.Count)
             {
+                Program.lista[gracz.wykonane_misje].lvl_up(gracz.level);
                 Console.WriteLine(Program.opis_misji[gracz.wykonane_misje] + "\n\n1 - podejmij się misji\npozostałe przyciski - powrót");
                 ConsoleKeyInfo cki;
                 cki = Console.ReadKey();
@@ -56,7 +57,6 @@ namespace Game
             }
             else
             {
-                Console.Clear();
                 Console.WriteLine("Aktualnie nie ma nowych misji, wróć później.\n\nWciśnij dowolny przycisk by kontynuować.");
                 Console.ReadKey();
             }
